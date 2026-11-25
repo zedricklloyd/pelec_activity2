@@ -1,0 +1,95 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Student Profiles {% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <div>
+        <h1>Student Profiles</h1>
+        <p>View and manage student information.</p>
+    </div>
+
+    <a href="{% url 'students:add_student' %}" class="add-button">
+        + Add Student
+    </a>
+
+</div>
+
+
+<div class="student-layout">
+
+    <div class="student-panel">
+
+        <div class="panel-header">
+            <div>
+                <h2>Students</h2>
+                <p>{{ students.count }} registered students</p>
+            </div>
+        </div>
+
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="studentSearch"
+                placeholder="Search student..."
+            >
+        </div>
+
+
+        <div class="student-list">
+
+            {% for student in students %}
+
+            <a href="{% url 'students:student_profile' student.pk %}"
+               class="student-item">
+
+                <div class="student-avatar">
+                    {{ student.first_name|first|upper }}
+                </div>
+
+                <div class="student-info">
+                    <strong>
+                        {{ student.first_name }}
+                        {{ student.last_name }}
+                    </strong>
+
+                    <small>{{ student.student_id }}</small>
+                </div>
+
+                <span class="student-arrow">›</span>
+
+            </a>
+
+            {% empty %}
+
+            <div class="empty-state">
+                <h3>No students yet</h3>
+                <p>Add a student to see their profile here.</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <div class="welcome-panel">
+
+        <div class="welcome-icon">▦</div>
+
+        <h2>Select a Student</h2>
+
+        <p>
+            Choose a student from the list to view their
+            personal, background, academic, and enrollment information.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

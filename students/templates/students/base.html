@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Enrollment{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'students/css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">E</div>
+            <h2>Enrollment</h2>
+        </div>
+
+        <p class="menu-label">MENU</p>
+
+        <a href="{% url 'students:student_list' %}" class="nav-link">
+            <span>▦</span>
+            Student Profiles
+        </a>
+
+        <a href="{% url 'students:add_student' %}" class="nav-link">
+            <span>＋</span>
+            Add Student
+        </a>
+
+        <div class="sidebar-bottom">
+            <div class="admin-avatar">A</div>
+
+            <div>
+                <strong>Administrator</strong>
+                <small>System Admin</small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <main class="main-content">
+
+        <div class="page-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </main>
+
+
+    <script src="{% static 'students/js/script.js' %}"></script>
+
+</body>
+</html>

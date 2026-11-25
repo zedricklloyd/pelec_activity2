@@ -1,0 +1,187 @@
+
+{% extends 'students/base.html' %}
+
+{% block title %}Student Profile{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'students:student_list' %}" class="back-link">
+    ← Back to Students
+</a>
+
+<div class="profile-header">
+
+    <div class="profile-avatar">
+        {{ student.first_name|first|upper }}
+    </div>
+
+    <div class="profile-heading">
+        <h1>
+            {{ student.first_name }}
+            {{ student.middle_name }}
+            {{ student.last_name }}
+        </h1>
+
+        <p>Student ID: {{ student.student_id }}</p>
+
+        <span class="status">
+            {{ student.enrollment_status }}
+        </span>
+    </div>
+
+</div>
+
+<section class="profile-panel">
+
+    <div class="tabs">
+
+        <button class="tab active" data-tab="personal">
+            Personal Info
+        </button>
+
+        <button class="tab" data-tab="background">
+            Background Info
+        </button>
+
+        <button class="tab" data-tab="academic">
+            Academic Info
+        </button>
+
+        <button class="tab" data-tab="enrollment">
+            Enrollment Info
+        </button>
+
+    </div>
+
+    <!-- PERSONAL INFORMATION -->
+    <div class="tab-content active" id="personal">
+
+        <h3>Personal Information</h3>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <label>First Name</label>
+                <p>{{ student.first_name }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Middle Name</label>
+                <p>{{ student.middle_name|default:"Not provided" }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Last Name</label>
+                <p>{{ student.last_name }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Birthdate</label>
+                <p>{{ student.birthdate }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Age</label>
+                <p>{{ student.age }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Gender</label>
+                <p>{{ student.gender }}</p>
+            </div>
+
+            <div class="detail-item full-width">
+                <label>Address</label>
+                <p>{{ student.address }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BACKGROUND INFORMATION -->
+    <div class="tab-content" id="background">
+
+        <h3>Background Information</h3>
+
+        <div class="details-grid">
+
+            <div class="detail-item full-width">
+                <label>Previous School</label>
+                <p>{{ student.previous_school }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Father's Name</label>
+                <p>{{ student.father_name }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Mother's Name</label>
+                <p>{{ student.mother_name }}</p>
+            </div>
+
+            <div class="detail-item full-width">
+                <label>Guardian</label>
+                <p>{{ student.guardian }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ACADEMIC INFORMATION -->
+    <div class="tab-content" id="academic">
+
+        <h3>Academic Information</h3>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <label>Course</label>
+                <p>{{ student.course }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Year Level</label>
+                <p>{{ student.year_level }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Section</label>
+                <p>{{ student.section }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ENROLLMENT INFORMATION -->
+    <div class="tab-content" id="enrollment">
+
+        <h3>Enrollment Information</h3>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <label>School Year</label>
+                <p>{{ student.school_year }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Semester</label>
+                <p>{{ student.semester }}</p>
+            </div>
+
+            <div class="detail-item">
+                <label>Enrollment Status</label>
+                <p>{{ student.enrollment_status }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
